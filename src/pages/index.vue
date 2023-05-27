@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends any, O extends any">
-const WIDTH = 6
-const HEIGHT = 6
-const isDEV = ref(true)
+let WIDTH = 10
+let HEIGHT = 10
+const isDEV = ref(false)
 let minesGenerated = false
 let gameOver = false
 
@@ -142,7 +142,9 @@ function checkWin() {
   }
 }
 
-function newGame() {
+function newGame(width = WIDTH, height = HEIGHT) {
+  WIDTH = width
+  HEIGHT = height
   minesGenerated = false
   gameOver = false
   resetState()
@@ -157,8 +159,17 @@ watchEffect(checkWin)
       MineSweeper
     </h1>
     <div flex="~ gap-2" justify-center>
-      <button btn @click="newGame">
+      <button btn @click="newGame()">
         新游戏
+      </button>
+      <button btn @click="newGame(5, 5)">
+        简单
+      </button>
+      <button btn @click="newGame(10, 10)">
+        中等
+      </button>
+      <button btn @click="newGame(20, 20)">
+        地狱
       </button>
       <button btn @click="isDEV = !isDEV">
         作弊
