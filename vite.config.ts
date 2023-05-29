@@ -10,7 +10,6 @@ import UnoCSS from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 
 export default defineConfig({
-  base: 'mineSweeper',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
